@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <calculator.h>
 
 namespace Ui {
 class MainWindow;
@@ -21,7 +22,6 @@ private slots:
     void on_dot_clicked();
 
     void on_one_clicked();
-
 
     void on_two_clicked();
 
@@ -47,11 +47,16 @@ private slots:
 
     void on_plus_clicked();
 
+    void on_equal_clicked();
+
 private:
     Ui::MainWindow *ui;
     QString inputText;
+    calculator *pCalculator;
 
     void append(char ch);
+
+    void validateText();
 };
 
 #endif // MAINWINDOW_H

@@ -3,7 +3,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    pCalculator(new calculator())
 {
     ui->setupUi(this);
 }
@@ -11,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete pCalculator;
 }
 
 void MainWindow::append(char ch)
@@ -94,4 +96,21 @@ void MainWindow::on_substraction_clicked()
 void MainWindow::on_plus_clicked()
 {
     this->append('+');
+}
+
+void MainWindow::on_equal_clicked()
+{
+    std::string str = "";
+    for(auto it = inputText.begin(); it != inputText.end(); it++){
+        str = str + ((char)it->unicode());
+    }
+    printf("real text %s\n", str.c_str());
+    double ret = pCalculator->calculate(inputText);
+    inputText = QString::number(ret);
+    validateText();
+}
+
+void MainWindow::validateText()
+{
+    this->ui->editText->setText(inputText);
 }
