@@ -16,12 +16,42 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_zero_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_dot_clicked();
+
+    void on_one_clicked();
+
+
+    void on_two_clicked();
+
+    void on_three_clicked();
+
+    void on_four_clicked();
+
+    void on_five_clicked();
+
+    void on_six_clicked();
+
+    void on_seven_clicked();
+
+    void on_eight_clicked();
+
+    void on_nine_clicked();
+
+    void on_division_clicked();
+
+    void on_multiplication_clicked();
+
+    void on_substraction_clicked();
+
+    void on_plus_clicked();
 
 private:
     Ui::MainWindow *ui;
+    QString inputText;
+
+    void append(char ch);
 };
 
 #endif // MAINWINDOW_H
