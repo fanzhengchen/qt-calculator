@@ -18,7 +18,8 @@ MainWindow::~MainWindow()
 void MainWindow::append(char ch)
 {
     printf("appending %c\n", ch);
-    this->ui->textEdit->append(QString(ch));
+    this->ui->textEdit->moveCursor(QTextCursor::End);
+    this->ui->textEdit->insertPlainText(QString(ch));
 }
 
 void MainWindow::on_zero_clicked()
@@ -102,7 +103,8 @@ void MainWindow::on_equal_clicked()
 {
     const QString& text = this->ui->textEdit->toPlainText();
     printf("real text %s\n", text.toStdString().c_str());
-    double ret = pCalculator->calculate(text);
+    double ret = 0;
+//    pCalculator->calculate(text);
     QString res = QString::number(ret);
     this->ui->textEdit->setText(res);
     validateText();
