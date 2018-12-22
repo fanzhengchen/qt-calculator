@@ -38,9 +38,9 @@ double calculator::calculate(const QString& text)
                 double temp_number = number.toDouble();
                 printf("pushing number %f__ \n", temp_number);
                 num.push(temp_number);
+                valid = false;
+                number.clear();
             }
-            valid = false;
-            number.clear();
 
             this->push(ch);
         }
@@ -51,30 +51,40 @@ double calculator::calculate(const QString& text)
 
 int calculator::push(char op_char)
 {
+    if(op_char == '(')
+    {
+        op.push(op_char);
+        return 0;
+    }
 
     printf("pushing %c\n", op_char);
     int level = get_level(op_char);
     while (!op.empty()) {
         char last_op = op.top();
-        if(get_level(last_op) < level){
-            break;
-        }
 
-        op.pop();
         if(last_op == '(' && op_char == ')')
         {
+            op.pop();
             return 0;
+        }
+
+        if(get_level(last_op) < level){
+            break;
         }
 
         double rhs = num.top();
         num.pop();
         double lhs = num.top();
         num.pop();
+        op.pop();
         printf("rekoning %f %f %c", lhs, rhs, last_op);
         double ret = rekon(lhs, rhs, last_op);
         num.push(ret);
     }
-    op.push(op_char);
+    if(op_char != ')')
+    {
+        op.push(op_char);
+    }
     return 0;
 }
 

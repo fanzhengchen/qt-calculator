@@ -117,3 +117,8 @@ void MainWindow::on_clear_clicked()
 {
     this->ui->textEdit->clear();
 }
+
+void MainWindow::on_store_clicked()
+{
+    
+}
