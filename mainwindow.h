@@ -49,9 +49,11 @@ private slots:
 
     void on_equal_clicked();
 
+    void on_clear_clicked();
+
 private:
     Ui::MainWindow *ui;
-    QString inputText;
+
     calculator *pCalculator;
 
     void append(char ch);

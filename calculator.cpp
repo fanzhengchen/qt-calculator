@@ -111,7 +111,6 @@ double calculator::rekon(double lhs, double rhs, char oper)
         case  '-':
             return lhs - rhs;
     }
-    char message[100] = {'0'};
     printf("illegal operator,rekoning __%c__", oper);
     assert(false && "illegal operator,rekonin");
     return 0;
